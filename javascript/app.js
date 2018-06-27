@@ -47,7 +47,6 @@ database.ref().on("child_added", function(cSnap) {
     // console.log(cSnap.val().dateAdded);
 
     //Display the db info in the table
-
     // grabbing table body, where we will insert the trains
     var tBody = $("tbody");
     // creating a new row for the train returned by childsnap
@@ -57,7 +56,7 @@ database.ref().on("child_added", function(cSnap) {
     var dest = $("<td>").text(cSnap.val().dest);
     var freq = $("<td>").text(cSnap.val().freq);
     var nextAtemp = nextArrival(cSnap.val().first, cSnap.val().freq);
-    var nextA = $("<td>").text(nextAtemp);
+    var nextA = $("<td>").text(convTime(nextAtemp));
     var minA = $("<td>").text(mAway(nextAtemp));
     
     // Append the newly created table data to the table row
@@ -73,6 +72,37 @@ database.ref().on("child_added", function(cSnap) {
     console.log("Errors handled: " + errorObject.code);
     });
 
+// Function to convert military time to standard time
+function convTime(time) {
+    // var for am/pm
+    var amPm;
+    // split hours and mins
+    var timesplit = time.split(":");
+
+    // if hours > 12 then do conversion
+    if (timesplit[0] > 12) {
+        timesplit[0] = timesplit[0]-12;
+        amPm="pm";
+    }
+    else {
+        if (timesplit[0] === "12") {
+            amPm="pm";
+        }
+        else {
+        amPm="am";
+        }
+    }
+
+    // if minutes > 10 then insert a 0
+    if (timesplit[1] < 10) {
+        timesplit[1] = "0"+timesplit[1];
+    }
+
+    // return the string with am/pm added
+    return (timesplit[0]+ ":" + timesplit[1] + " " + amPm);
+
+}
+
 // Function to display current time
 function showTime() {
     var datime = new Date();
@@ -80,10 +110,10 @@ function showTime() {
     var damin = datime.getMinutes();
     // conditional to insert a 0 for minutes under 10
     if (damin>9) {
-    $(".time").html("The current time is: " + dahour + ":" + damin);
+    $(".time").html("The schedule below is based on current time of: " + dahour + ":" + damin);
     }
     else {
-    $(".time").html("The current time is: " + dahour + ":0" + damin);
+    $(".time").html("The schedule below is based on current time of: " + dahour + ":0" + damin);
 
     }
 }
@@ -134,3 +164,4 @@ function mAway (nextArri) {
         return nextAriva-curInMin;
 
 }
+

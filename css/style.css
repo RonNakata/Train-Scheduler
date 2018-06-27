@@ -1,5 +1,10 @@
 *{
     box-sizing: border-box;
+    line-height: 20px;
+}
+
+body {
+    background-image: url('../images/train.jpg');
 }
 
 .wrapper{
@@ -16,48 +21,77 @@
 }
 .title {
     background-color: red;
+    font-size: 35px;
+    color: white;
+    width: 25%;
+    margin: auto;
+    overflow: hidden;
+    opacity: .70;
 }
 
 .time {
-    background-color: lightpink;
+    background-color: orangered;
+    width: 25%;
+    margin: auto;
+    margin-top: 20px;
+    opacity: .70;
     }
 
 .schedule {
-    background-color: orange;
+    background-color: yellowgreen;
     padding: 20px;
+    opacity: .80;
 }
 
 .addtrain {
-    background-color: yellow;
+    background-color: yellowgreen;
+    opacity: .50;
 }
 
 caption {
-    text-align: left;
     color: white;
-    background-color: yellowgreen;
+    background-color: green;
     font-size: 20px;
+    border-bottom: 2px solid black;
 }
 
 th {
-    background-color: green;
+    background-color: yellowgreen;
+}
+
+tr:nth-child(even){
+    background-color: darkorange;
+}
+
+tr:nth-child(odd){
+    background-color: orange;
+}
+
+tr:hover {
+    /* could not get opacity 1 to work here, read for an hour + and gave up */
+    background: rgb(255, 255, 255, 1);
 }
 
 table {
     width: 100%;
+    border: 1px solid black;
 }
 
 form {
     text-align: left;
-    padding: 2.5%;
+    padding: 1.5%;
 }
 form input{
     width: 100%;
-}
-
-form label{
-    color: red;
+    background-color: greenyellow;
 }
 
 button {
     margin-top: 20px;
+}
+
+@media screen and (max-width: 640px) {
+    .title, .time {
+        width: 90%;
+    }
 }
