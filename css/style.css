@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    width: 95%;
+}
+
+.title, .time, .schedule, .addtrain {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.title {
+    background-color: red;
+}
+
+.time {
+    background-color: lightpink;
+    }
+
+.schedule {
+    background-color: orange;
+    padding: 20px;
+}
+
+.addtrain {
+    background-color: yellow;
+}
+
+caption {
+    text-align: left;
+    color: white;
+    background-color: yellowgreen;
+    font-size: 20px;
+}
+
+th {
+    background-color: green;
+}
+
+table {
+    width: 100%;
+}
+
+form {
+    text-align: left;
+    padding: 2.5%;
+}
+form input{
+    width: 100%;
+}
+
+form label{
+    color: red;
+}
+
+button {
+    margin-top: 20px;
+}
